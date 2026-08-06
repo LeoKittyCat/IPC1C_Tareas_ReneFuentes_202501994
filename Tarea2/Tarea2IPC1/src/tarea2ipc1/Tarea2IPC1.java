@@ -33,7 +33,33 @@ public class Tarea2IPC1 {
         System.out.println("Promedio inicial: " + promedioInicial);
         System.out.println("Opcion para continuar: " + opcionContinuar);
         System.out.println("Programa activo: " + programaActivo);
+    }
+    
+    public static int leerEneteroValidado(String mensaje, int minimo, int maximo) {
+        int numero; //Con esta variable puedo guardar el numero que ingrese el usuario, el cual debe de ser entero
         
+        while (true) {
+            
+            System.out.print(mensaje); //mostramos en pantalla el mensaje. No se usa ln al final ya que quiero que el usuario escriba en esa misma linea
+            
+            if (scanner.hasNextInt()) /*verificamos que el dato ingresado sea entero*/{
+                
+                numero = scanner.nextInt(); //si es entero, entonces toma ese dato entero y lo guarda como numero
+                
+                if  (numero >= minimo && numero <= maximo) {
+                    return numero; //El numero ingresado si se registra si es mayor que 1 y menor que 100
+                }
+                
+                 System.out.println(
+                 "Error: el numero debe estar entre "
+                 + minimo + "y" + maximo + "."); //Mostrar mensaje de error si el usuario ingresa un valor invalido
+                
+                
+            } else {
+                System.out.println("Error: debes de ingresar un numero entero");
+                scanner.next(); //Desecha la respuesta incorrecta del usuario
+            }
+        }
     }
     
 }
