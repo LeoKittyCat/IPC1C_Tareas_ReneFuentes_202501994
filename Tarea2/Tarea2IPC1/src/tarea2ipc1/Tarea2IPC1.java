@@ -38,8 +38,12 @@ public class Tarea2IPC1 {
                 10);
         int[] numeros = new int[cantidadNumeros]; /*Guardamos los datos*/
         
-        llenarArreglo(numeros);
-       mostrarResultadosArreglos(numeros);
+       llenarArreglo(numeros);
+       mostrarResultadosArreglo(numeros);
+       
+       int[][]matriz = new int[3][3]; //Los dos pares de corchetes indican que son un arreglo de dos dimensiones, osea una matriz de 3x3
+       llenarMatriz(matriz);
+       mostrarMatrizYSuma(matriz);
     }
     
     public static int leerEnteroValidado(String mensaje, int minimo, int maximo) {
@@ -83,7 +87,7 @@ public class Tarea2IPC1 {
         }
     }
     
-    public static void mostrarResultadosArreglos(int[] numeros) {
+    public static void mostrarResultadosArreglo(int[] numeros) {
         
         int maximo = numeros[0]; //Tomamos el primer numero del arreglo como punto de partida
         int minimo = numeros[0];
@@ -106,5 +110,49 @@ public class Tarea2IPC1 {
         System.out.println("Valor maximo: " + maximo);
         System.out.println("Valor minimo: " + minimo);
         System.out.println("Promedio: " + promedio);
+    }
+    
+    public static void llenarMatriz(int[][] matriz) {
+        
+        System.out.println("\n--- INGRESO DE LA MATRIZ 3x3 ---");
+        
+        for (int fila = 0; fila < matriz.length; fila++) { //Este primer ciclo controla las filas
+            
+            for (int columna = 0; columna < matriz[fila].length; columna++) { //El segundo controla las columnas
+                
+                matriz[fila][columna] = leerEnteroValidado( //Pedimos un dato valido y lo guardamos en la posicion actual 
+                "Ingrese el valor de la fila "
+                + (fila +1)
+                + ", columna "
+                + (columna + 1)
+                + " (entre 1 y 100): ",
+                        1,
+                        100);
+            }
+        }
+    }
+    
+    public static void mostrarMatrizYSuma(int[][] matriz) {
+        
+        int suma = 0;
+        
+        System.out.println("\n--- MATRIZ INGRESADA ---");
+        
+        for (int fila = 0; fila  < matriz.length; fila++) {
+            
+            for (int columna = 0; 
+                    columna  <  matriz[fila].length; 
+                    columna++) {
+                
+                System.out.print(matriz[fila][columna] + "\t"); //Agrega una tabulacion para que la matriz tenga orden...pues de matriz XD
+                
+                suma = suma + matriz[fila][columna]; 
+            } 
+            
+            System.out.println();
+        } //Aqui creamos salto de linea para pasar a la siguiente fila
+        
+        System.out.println("Suma de todos los elementos: " + suma); //Mostramos la suma total de todos los nummeros que conforman la matriz
+    
     }
 }
