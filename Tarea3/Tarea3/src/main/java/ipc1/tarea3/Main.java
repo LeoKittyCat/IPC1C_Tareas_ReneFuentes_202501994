@@ -27,7 +27,7 @@ public class Main {
 
             total = total + tarifa;
         }
-        // Mensaje 
+        
         System.out.println();
         System.out.println("TOTAL DE LA FLOTA: Q" + total);
     }
